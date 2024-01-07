@@ -16,8 +16,6 @@ namespace Entidades
             nombre = n;
             gastoMensual = g;
         }
-
-
         public string Nombre
         {
             get { return nombre; }
@@ -28,6 +26,10 @@ namespace Entidades
         {
             get { return gastoMensual; }
             set { gastoMensual = value; }
+        }
+        public override string ToString()
+        {
+            return string.Format("{0}\n{1}\n{2}", IdOb, nombre, gastoMensual);
         }
     }
 }

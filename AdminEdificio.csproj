@@ -107,6 +107,12 @@
     <Compile Include="frmInRecIngreso.Designer.cs">
       <DependentUpon>frmInRecIngreso.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenimiento.Designer.cs">
+      <DependentUpon>frmMantenimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPropietario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,8 +154,14 @@
     <EmbeddedResource Include="frmEstCuenta.resx">
       <DependentUpon>frmEstCuenta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmInEstCuenta.resx">
+      <DependentUpon>frmInEstCuenta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmInquilino.resx">
       <DependentUpon>frmInquilino.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenimiento.resx">
+      <DependentUpon>frmMantenimiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPropietario.resx">
       <DependentUpon>frmPropietario.cs</DependentUpon>

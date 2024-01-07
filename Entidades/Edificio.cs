@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Datos;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,7 @@ namespace Entidades
         private List<Servicio> servicios;
         private List<Propietario> propietarios;
         private List<EstadoCuenta> estadosCuenta;
+        private List<Mantenimiento> manteniminetos;
         private Balance pagosMensuales;
 
         public Edificio(List<Departamento> d, List<Servicio> s, List<Propietario> p)
@@ -29,6 +32,7 @@ namespace Entidades
             propietarios = new List<Propietario>();
             estadosCuenta = new List<EstadoCuenta>();
             pagosMensuales = new Balance();
+            manteniminetos= new List<Mantenimiento>();
         }
         public List<Departamento> Departamentos
         {
@@ -54,5 +58,9 @@ namespace Entidades
             get { return propietarios; }
             set { propietarios = value; }
         }
+        public List<Mantenimiento> Mantenimientos {
+            get { return manteniminetos;  }
+        }
+       
     }
 }

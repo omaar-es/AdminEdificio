@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace AdminEdificio
 {
     public partial class frmReciboIngreso : Form
     {
-        public frmReciboIngreso()
+        private static Administrador admin;
+        public frmReciboIngreso(Administrador adminis)
         {
             InitializeComponent();
+            admin = adminis;
         }
 
     }

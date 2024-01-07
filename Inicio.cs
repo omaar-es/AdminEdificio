@@ -1,4 +1,5 @@
-﻿using FontAwesome.Sharp;
+﻿using Entidades;
+using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,16 +16,19 @@ namespace AdminEdificio
     {
         private static IconMenuItem MenuActivo;
         private static Form formActivo;
+        private static Administrador admin;
         public Inicio()
         {
             InitializeComponent();
             MenuActivo = null;
             formActivo = null;
+            Edificio edif = new Edificio();
+            admin = new Administrador(edif);
         }
 
         private void Inicio_Load(object sender, EventArgs e)
         {
-
+            
         }
         private void MenuActivoIcono(IconMenuItem menu) {
             if (MenuActivo != null)
@@ -52,7 +56,7 @@ namespace AdminEdificio
         //ABRIR FORMULARIOS DEL MENÚ Y VISTA DE MENÚ ACTIVO
         private void propietariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new frmPropietario());
+            AbrirFormulario(new frmPropietario(admin));
         }
         private void vrInfoEdif_Click(object sender, EventArgs e)
         {
@@ -76,48 +80,57 @@ namespace AdminEdificio
         }
         private void inquilinosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new frmInquilino());
+            AbrirFormulario(new frmInquilino(admin));
         }
         private void departamentosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new frmDepartamento());
+            AbrirFormulario(new frmDepartamento(admin));
         }
         private void recibosDeIngresosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new frmReciboIngreso());
+            AbrirFormulario(new frmReciboIngreso(admin));
         }
         private void recibosDeEgresosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new frmReciboEgreso());
+            AbrirFormulario(new frmReciboEgreso(admin));
         }
         private void estadosDeCuentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new frmEstCuenta());
+            AbrirFormulario(new frmEstCuenta(admin));
         }
         private void deudoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new frmDeudores());
+            AbrirFormulario(new frmDeudores(admin));
         }
         private void recibosDeIngresosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new frmInRecIngreso());
+            AbrirFormulario(new frmInRecIngreso(admin));
         }
         private void recibosDeEgresosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new frmInRecEgreso());
+            AbrirFormulario(new frmInRecEgreso(admin));
         }
         private void estadosDeCuentaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new frmInEstCuenta());
+            AbrirFormulario(new frmInEstCuenta(admin));
         }
         private void cierreDelEstadoDeCuentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new frmInCierreEstCuenta());
+            AbrirFormulario(new frmInCierreEstCuenta(admin));
         }
         private void serviciosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new frmServicios());
+            AbrirFormulario(new frmServicios(admin));
         }
 
+        private void InMantenimiento_Click(object sender, EventArgs e)
+        {
+            MenuActivoIcono((IconMenuItem)sender);
+        }
+
+        private void mantenimientosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new frmMantenimiento(admin));
+        }
     }
 }

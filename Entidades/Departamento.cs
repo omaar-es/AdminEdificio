@@ -23,6 +23,14 @@ namespace Entidades
             deudasTotales = new List<Deuda>();
             rentado = false;
         }
+        public Departamento()
+        {
+            IdOb = -1;
+            numero = 0;
+            tipo = "";
+            deudasTotales = new List<Deuda>();
+            rentado = false;
+        }
 
         public int Numero
         {
@@ -61,6 +69,18 @@ namespace Entidades
             if (inq!=null) {
                 rentado = true;
             }
+        }
+
+        public override string ToString()
+        {
+            if (inq != null)
+            {
+                return string.Format("{0}\n{1}\n{2}\n DATOS DEL INQUILINO\n{3}", IdOb, numero, tipo, inq.ToString());
+            }
+            else {
+                return string.Format("{0}\n{1}\n{2}\n SIN INQUILINO", IdOb, numero, tipo);
+            }
+            
         }
 
     }

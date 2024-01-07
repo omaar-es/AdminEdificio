@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,21 @@ namespace AdminEdificio
 {
     public partial class frmServicios : Form
     {
-        public frmServicios()
+        private static Administrador admin;
+        public frmServicios(Administrador adminis)
         {
             InitializeComponent();
+            admin = adminis;
+        }
+
+        private void frmServicios_Load(object sender, EventArgs e)
+        {
+            admin.Edificio.Servicios.Clear();
+            admin.listarServicios();
+            foreach (Servicio serv in admin.Edificio.Servicios)
+            {
+                MessageBox.Show(serv.ToString());
+            }
         }
     }
 }
