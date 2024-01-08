@@ -52,7 +52,6 @@
     <Compile Include="Edificio.cs" />
     <Compile Include="EstadoCuenta.cs" />
     <Compile Include="Fecha.cs" />
-    <Compile Include="FechaTime.cs" />
     <Compile Include="id.cs" />
     <Compile Include="Inquilino.cs" />
     <Compile Include="Mantenimiento.cs" />

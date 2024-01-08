@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,14 +31,25 @@ namespace Entidades
         {
             edificio.PagosMensuales.Ingresos.Add(new ReciboCuota(cantidad, fecha, departamento));
         }
-
-        public void GenerarEstadoDeCuenta(Fecha fechaInicio, double cuotaPropietario)
+        public void GenerarEstadoDeCuenta(Fecha fechaInicio, DateTime fechaFinal, float cuotaPropietario)
         {
-            edificio.EstadosCuenta.Add(new EstadoCuenta(edificio.PagosMensuales, fechaInicio, cuotaPropietario));
-        }
-        public void GenerarEstadoDeCuenta(List<Propietario> propietarios, double deuda, FechaTime fecCorte)
-        {
-            edificio.EstadosCuenta.Add(new EstadoCuenta(edificio.PagosMensuales, propietarios, deuda, fecCorte));
+            try
+            {
+                string fechaInsertar = $"{fechaInicio.Anio:D4}-{fechaInicio.Mes:D2}-{fechaInicio.Dia:D2}";
+                conexion oConexion = new conexion();
+                string query = "INSERT INTO EstadoCuenta (fecInicio, fecCorte, cuota) VALUES (@fecI, @fecF, @c)";
+                MySqlCommand cmd = new MySqlCommand(query, oConexion.getConection());
+                cmd.Parameters.AddWithValue("@fecI", fechaInsertar);
+                cmd.Parameters.AddWithValue("@fecF", fechaFinal);
+                cmd.Parameters.AddWithValue("@c", cuotaPropietario);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al ejecutar la sentencia SQL: {ex.Message}");
+                
+            }
+            edificio.EstadosCuenta.Add(new EstadoCuenta(fechaInicio, fechaFinal, cuotaPropietario));
         }
 
         public void asignarDepartamentosInquilinos() {
@@ -224,6 +236,7 @@ namespace Entidades
                 edificio.Servicios.Add(null);
             }
         }
+
 
 
     }

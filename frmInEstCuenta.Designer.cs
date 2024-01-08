@@ -104,6 +104,7 @@
             this.crearEstCuenta.Text = "Crear";
             this.crearEstCuenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.crearEstCuenta.UseVisualStyleBackColor = false;
+            this.crearEstCuenta.Click += new System.EventHandler(this.crearEstCuenta_Click);
             // 
             // panel1
             // 

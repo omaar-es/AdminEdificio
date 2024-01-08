@@ -11,21 +11,23 @@ namespace Entidades
         private List<Propietario> deudores;
         private double deudaTotal;
         private Fecha fecIni;
-        private FechaTime fecCorte;
-        private double cuotaPropietario;
+        private DateTime fecCorte;
+        private float cuotaPropietario;
 
-        public EstadoCuenta(Balance balanceMensual, List<Propietario> d, double dT, FechaTime fCorte) : base(balanceMensual)
-        {
-            deudores = d;
-            deudaTotal = dT;
-            fecCorte = fCorte;
-        }
-
-        public EstadoCuenta(Balance balanceMensual, Fecha fIni, double cP) : base(balanceMensual)
+        public EstadoCuenta(Balance balanceMensual, Fecha fIni, DateTime fFin, float cP) : base(balanceMensual)
         {
             deudores = new List<Propietario>();
             deudaTotal = 0;
             fecIni = fIni;
+            fecCorte = fFin;
+            cuotaPropietario = cP;
+        }
+        public EstadoCuenta(Fecha fIni, DateTime fFin, float cP) : base()
+        {
+            deudores = new List<Propietario>();
+            deudaTotal = 0;
+            fecIni = fIni;
+            fecCorte=fFin;
             cuotaPropietario = cP;
         }
         public List<Propietario> Deudores
@@ -42,11 +44,12 @@ namespace Entidades
             get { return fecIni; }
             set { fecIni = value; }
         }
-        public FechaTime FecCorte{
+        public DateTime FecCorte
+        {
             get { return fecCorte; }
             set { fecCorte = value; }
         }
-        public double CuotaPropietario { 
+        public float CuotaPropietario { 
             get { return cuotaPropietario; }
             set {cuotaPropietario = value;}
         }

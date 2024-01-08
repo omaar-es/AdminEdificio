@@ -10,16 +10,19 @@ namespace Entidades
     {
         private int mes;
         private int anio;
+        private int dia;
 
         public Fecha()
         {
             mes = 1;
             anio = 2000;
+            dia = 1;
         }
-        public Fecha(int m, int a)
+        public Fecha(int d, int m, int a)
         {
             mes = m;
             anio = a;
+            dia = d;
         }
 
         public int Mes
@@ -31,6 +34,10 @@ namespace Entidades
         {
             get { return anio; }
             set { anio = value; }
+        }
+        public int Dia { 
+            get { return dia; }
+            set { dia = value; }
         }
     }
 }

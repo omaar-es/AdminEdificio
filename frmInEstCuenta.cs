@@ -58,5 +58,34 @@ namespace AdminEdificio
             HoraFin.Value = new DateTime(HoraFin.Value.Year, HoraFin.Value.Month, HoraFin.Value.Day,
                                                  HoraFin.Value.Hour, (int)numericUpDownMinute.Value, 0);
         }
+
+        private void crearEstCuenta_Click(object sender, EventArgs e)
+        {
+            DateTime inicio = calendarioInEstCuenta.SelectionStart;
+            DateTime final = calendarioInEstCuenta.SelectionEnd;
+            final = new DateTime(final.Year, final.Month, final.Day, HoraFin.Value.Hour, HoraFin.Value.Minute, 0);
+            Fecha fecha = new Fecha(inicio.Day, inicio.Month, inicio.Year);
+            float cuota;
+            float.TryParse(cuotaMens.Text, out cuota);
+            int cantidadEstados = admin.Edificio.EstadosCuenta.Count();
+            admin.GenerarEstadoDeCuenta(fecha, final, cuota);
+            int cantidadEstadosdespues = admin.Edificio.EstadosCuenta.Count();
+            if (cantidadEstados != cantidadEstadosdespues)
+            {
+                MessageBox.Show("Datos insertados correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else {
+                MessageBox.Show("No se pudieron insertar los datos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            limpiar();
+
+        }
+        private void limpiar() {
+            cuotaMens.Text = "0";
+            fecIni.Text = "";
+            fecFin.Text = "";
+            HoraFin.Text = "";
+            
+        }
     }
 }
