@@ -27,8 +27,9 @@ namespace AdminEdificio
             admin.asignarDepartamentosPropietarios();
             foreach (Propietario prop in admin.Edificio.Propietarios)
             {
-                MessageBox.Show(prop.ToString());
+                datosPropietario.Rows.Add("", prop.IdOb, prop.Nombre, prop.App, prop.Apm, prop.Rfc, prop.Direccion);
             }
+            
         }
     }
 }
