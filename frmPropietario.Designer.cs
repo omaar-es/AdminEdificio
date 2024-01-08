@@ -74,6 +74,7 @@
             this.datosPropietario.RowTemplate.Height = 28;
             this.datosPropietario.Size = new System.Drawing.Size(830, 352);
             this.datosPropietario.TabIndex = 0;
+            this.datosPropietario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datosPropietario_CellClick);
             // 
             // label1
             // 

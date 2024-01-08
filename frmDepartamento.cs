@@ -14,23 +14,43 @@ namespace AdminEdificio
     public partial class frmDepartamento : Form
     {
         private static Administrador admin;
+        private int id;
         public frmDepartamento(Administrador adminis)
         {
             InitializeComponent();
-            admin=adminis; 
+            admin=adminis;
+            id = -1;
+        }
+        public frmDepartamento(Administrador adminis, int idi)
+        {
+            InitializeComponent();
+            admin = adminis;
+            id = idi;
         }
 
         private void frmDepartamento_Load(object sender, EventArgs e)
         {
             //PONER ESTAS ACCIONES COMO UN METODO EN LA CLASE ADMIN. SON UTILIZADAS EN FRMPROPIETARIO
             admin.Edificio.Departamentos.Clear();
-            admin.listarDepartamentos(admin.Edificio.Departamentos);
+            if (id != -1)
+            {
+                admin.listarDepartamentos(admin.Edificio.Departamentos, id);
+            }
+            else {
+                admin.listarDepartamentos(admin.Edificio.Departamentos);
+            }
             admin.asignarDepartamentosInquilinos();
             foreach (Departamento depto in admin.Edificio.Departamentos)
             {
-                MessageBox.Show(depto.ToString());
+                if (depto.Inq != null)
+                {
+                    datosDepto.Rows.Add(depto.IdOb, depto.Numero, depto.Tipo, depto.Inq.Nombre + " "+ depto.Inq.App+" "+ depto.Inq.Apm);
+                }
+                else {
+                    datosDepto.Rows.Add(depto.IdOb, depto.Numero, depto.Tipo, "Sin inquilino");
+                }
+                
             }
-            
         }
     }
 }
